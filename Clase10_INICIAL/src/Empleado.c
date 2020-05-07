@@ -1,5 +1,5 @@
 /*
- * Fantasma.c
+ * Empleado.c
  *
  *  Created on: Apr 23, 2020
  *      Author: Mauro
@@ -8,16 +8,16 @@
 #include <stdlib.h>
 #include <string.h>
 
-#include "Pantalla.h"
+#include "Empleado.h"
 #include "utn.h"
 
 /**
- * \brief Imprime los datos de un fantasma
- * \param pElemento Puntero al fantasma que se busca imprimir
+ * \brief Imprime los datos de un Empleado
+ * \param pElemento Puntero al Empleado que se busca imprimir
  * \return Retorna 0 (EXITO) y -1 (ERROR)
  *
  */
-int pan_imprimir(Pantalla* pElemento)
+int emp_imprimir(Empleado* pElemento)
 {
 	int retorno=-1;
 	if(pElemento != NULL)
@@ -35,7 +35,7 @@ int pan_imprimir(Pantalla* pElemento)
  * \return Retorna 0 (EXITO) y -1 (ERROR)
  *
  */
-int pan_imprimirArray(Pantalla* array,int limite)
+int emp_imprimirArray(Empleado* array,int limite)
 {
 	int respuesta = -1;
 	int i;
@@ -61,7 +61,7 @@ int pan_imprimirArray(Pantalla* array,int limite)
  * \return Retorna 0 (EXITO) y -1 (ERROR)
  *
  */
-int pan_inicializarArray(Pantalla* array,int limite)
+int emp_inicializarArray(Empleado* array,int limite)
 {
 	int respuesta = -1;
 	int i;
@@ -77,18 +77,18 @@ int pan_inicializarArray(Pantalla* array,int limite)
 }
 
 /**
- * \brief Da de alta un fantasma en una posicion del array
+ * \brief Da de alta un Empleado en una posicion del array
  * \param array Array de pantallas a ser actualizado
  * \param limite Limite del array de pantallas
  * \param indice Posicion a ser actualizada
- * \param id Identificador a ser asignado al fantasma
+ * \param id Identificador a ser asignado al Empleado
  * \return Retorna 0 (EXITO) y -1 (ERROR)
  *
  */
-int pan_altaArray(Pantalla* array,int limite, int indice, int* id)
+int emp_altaArray(Empleado* array,int limite, int indice, int* id)
 {
 	int respuesta = -1;
-	Pantalla auxiliar;
+	Empleado auxiliar;
 	if(array != NULL && limite > 0 && indice < limite)
 	{
 		if(	utn_getNombre(auxiliar.nombre, NOMBRE_LEN, "\nNombre?", "\nNombre invalido",2) == 0 &&
@@ -106,16 +106,16 @@ int pan_altaArray(Pantalla* array,int limite, int indice, int* id)
 }
 
 /**
- * \brief Da de alta un fantasma en una posicion del array modo TEST
+ * \brief Da de alta un Empleado en una posicion del array modo TEST
  * \param array Array de pantallas a ser actualizado
  * \param limite Limite del array de pantallas
  * \param indice Posicion a ser actualizada
- * \param id ID a ser asignado al fantasma
+ * \param id ID a ser asignado al Empleado
  *  *
  * \return Retorna 0 (EXITO) y -1 (ERROR)
  *
  */
-int pan_altaTestArray(Pantalla* array,int limite, int indice, int* id, Pantalla auxiliar)
+int emp_altaTestArray(Empleado* array,int limite, int indice, int* id, Empleado auxiliar)
 {
 	int respuesta = -1;
 
@@ -131,17 +131,17 @@ int pan_altaTestArray(Pantalla* array,int limite, int indice, int* id, Pantalla 
 }
 
 /**
- * \brief Actualiza los datos de un fantasma en una posicion del array
+ * \brief Actualiza los datos de un Empleado en una posicion del array
  * \param array Array de pantallas a ser actualizado
  * \param limite Limite del array de pantallas
  * \param indice Posicion a ser actualizada
  * \return Retorna 0 (EXITO) y -1 (ERROR)
  *
  */
-int pan_modificarArray(Pantalla* array,int limite, int indice)
+int emp_modificarArray(Empleado* array,int limite, int indice)
 {
 	int respuesta = -1;
-	Pantalla auxiliar;
+	Empleado auxiliar;
 	if(array != NULL && limite > 0 && indice < limite)
 	{
 		if(	utn_getNombre(auxiliar.nombre, NOMBRE_LEN, "\nNombre?", "\nNombre invalido",2) == 0 &&
@@ -163,7 +163,7 @@ int pan_modificarArray(Pantalla* array,int limite, int indice)
  * \return Retorna 0 (EXITO) y -1 (ERROR)
  *
  */
-int pan_bajaArray(Pantalla* array,int limite, int indice)
+int emp_bajaArray(Empleado* array,int limite, int indice)
 {
 	int respuesta = -1;
 	if(array != NULL && limite > 0 && indice < limite)
@@ -175,13 +175,13 @@ int pan_bajaArray(Pantalla* array,int limite, int indice)
 }
 
 /** \brief Busca un ID en un array y devuelve la posicion en que se encuentra
-* \param array fantasma Array de fantasma
+* \param array Empleado Array de Empleado
 * \param limite int Tamaño del array
 * \param posicion int Posicion del array donde se encuentra el valor buscado
 * \return int Return (-1) si no encuentra el valor buscado o Error [Invalid length or NULL pointer] - (0) si encuentra el valor buscado
 *
 */
-int pan_buscarId(Pantalla array[], int limite, int valorBuscado)
+int emp_buscarId(Empleado array[], int limite, int valorBuscado)
 {
     int retorno=-1;
     int i;
@@ -208,7 +208,7 @@ int pan_buscarId(Pantalla array[], int limite, int valorBuscado)
  * \return Retorna el incice de la posicion vacia y -1 (ERROR)
  *
  */
-int pan_getEmptyIndex(Pantalla* array,int limite)
+int emp_getEmptyIndex(Empleado* array,int limite)
 {
 	int respuesta = -1;
 	int i;
@@ -233,12 +233,12 @@ int pan_getEmptyIndex(Pantalla* array,int limite)
  * \return Retorna el incice de la posicion vacia y -1 (ERROR)
  *
  */
-int pan_ordenarPorNombre(Pantalla* array,int limite)
+int emp_ordenarPorNombre(Empleado* array,int limite)
 {
 	int respuesta = -1;
 	int i;
 	int flagSwap;
-	Pantalla auxiliar;
+	Empleado auxiliar;
 	if(array != NULL && limite > 0)
 	{
 		respuesta = 0;

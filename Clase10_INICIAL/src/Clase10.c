@@ -1,55 +1,48 @@
 /*
- * >>>> CLASE 10 <<<<
+ * >>>> TP N2<<<<
  *
- * Desarrollar una aplicacion que permita gestionar una array de Fantasma
- *
- * Se debera poder realizar
- * 	ALTAS
- * 	BAJAS
- * 	MODIFICACIONES
- *
- * La aplicacion debera permitir ordenar el array por Nombre del fantasma
+ *Crear biblioteca Empleado
  *
  * */
 
 #include <stdio.h>
 #include <stdlib.h>
 #include <stdio_ext.h>
-#include "Pantalla.h"
+#include "Empleado.h"
 #include "utn.h"
 
-#define CANTIDAD_FANTASMA 4
+#define CANTIDAD_Empleado 1000
 
 int main(void) {
 
-	Pantalla arrayFantasma[CANTIDAD_FANTASMA];
-	int idFantasma=0;
+	Empleado arrayEmpleado[CANTIDAD_Empleado];
+	int idEmpleado=0;
 	int opcion;
 	int auxiliarIndice;
 	int auxiliarId;
 
-	if(fan_inicializarArray(arrayFantasma,CANTIDAD_FANTASMA) == 0)
+	if(fan_inicializarArray(arrayEmpleado,CANTIDAD_Empleado) == 0)
 	{
 		printf("Array inicializado correctamente. \n\n");
 	}
 	do
 	{
 		if(!utn_getNumero(	&opcion,
-							"\n\n1.Cargar un Fantasma"
-							"\n2.Modificar un Fantasma"
-							"\n3.Eliminar un Fantasma"
-							"\n4.Ordenar lista de Fantasma"
-							"\n5.Imprimir lista Fantasma"
+							"\n\n1.Cargar un Empleado"
+							"\n2.Modificar un Empleado"
+							"\n3.Eliminar un Empleado"
+							"\n4.Ordenar lista de Empleado"
+							"\n5.Imprimir lista Empleado"
 							"\n6.Salir\n\n",
 							"\nError opcion invalida",1,6,2) )
 		{
 			switch(opcion)
 			{
 			case 1:
-				auxiliarIndice = fan_getEmptyIndex(arrayFantasma,CANTIDAD_FANTASMA);
+				auxiliarIndice = fan_getEmptyIndex(arrayEmpleado,CANTIDAD_Empleado);
 				if(auxiliarIndice >= 0)
 				{
-					if(fan_altaArray(arrayFantasma,CANTIDAD_FANTASMA,auxiliarIndice,&idFantasma) == 0)
+					if(fan_altaArray(arrayEmpleado,CANTIDAD_Empleado,auxiliarIndice,&idEmpleado) == 0)
 					{
 						printf("\nCarga realizada con exito\n");
 					}
@@ -60,12 +53,12 @@ int main(void) {
 				}
 				break;
 			case 2:
-				fan_imprimirArray(arrayFantasma,CANTIDAD_FANTASMA);
-				if(utn_getNumero(&auxiliarId,"\nIndique el ID del fantasma a modificar","\nID invalido",0,idFantasma,0) == 0)
+				fan_imprimirArray(arrayEmpleado,CANTIDAD_Empleado);
+				if(utn_getNumero(&auxiliarId,"\nIndique el ID del Empleado a modificar","\nID invalido",0,idEmpleado,0) == 0)
 				{
-					auxiliarIndice = fan_buscarId(arrayFantasma,CANTIDAD_FANTASMA,auxiliarId);
+					auxiliarIndice = fan_buscarId(arrayEmpleado,CANTIDAD_Empleado,auxiliarId);
 					if(	auxiliarIndice >= 0 &&
-						fan_modificarArray(arrayFantasma,CANTIDAD_FANTASMA,auxiliarIndice) == 0)
+						fan_modificarArray(arrayEmpleado,CANTIDAD_Empleado,auxiliarIndice) == 0)
 					{
 						printf("\nModificacion realizada con exito\n");
 					}
@@ -73,23 +66,23 @@ int main(void) {
 				break;
 
 			case 3:
-				fan_imprimirArray(arrayFantasma,CANTIDAD_FANTASMA);
-				if(utn_getNumero(&auxiliarId,"\nIndique el ID del fantasma a eliminar","\nID invalido",0,idFantasma,0)==0)
+				fan_imprimirArray(arrayEmpleado,CANTIDAD_Empleado);
+				if(utn_getNumero(&auxiliarId,"\nIndique el ID del Empleado a eliminar","\nID invalido",0,idEmpleado,0)==0)
 				{
-					auxiliarIndice = fan_buscarId(arrayFantasma,CANTIDAD_FANTASMA,auxiliarId);
+					auxiliarIndice = fan_buscarId(arrayEmpleado,CANTIDAD_Empleado,auxiliarId);
 					if(	auxiliarIndice >= 0 &&
-						fan_bajaArray(arrayFantasma,CANTIDAD_FANTASMA,auxiliarIndice)== 0)
+						fan_bajaArray(arrayEmpleado,CANTIDAD_Empleado,auxiliarIndice)== 0)
 					{
 						printf("\nBaja realizada con exito\n");
 					}
 				}
 				break;
 			case 4:
-				fan_ordenarPorNombre(arrayFantasma,CANTIDAD_FANTASMA);
+				fan_ordenarPorNombre(arrayEmpleado,CANTIDAD_Empleado);
 				break;
 
 			case 5:
-				fan_imprimirArray(arrayFantasma,CANTIDAD_FANTASMA);
+				fan_imprimirArray(arrayEmpleado,CANTIDAD_Empleado);
 				break;
 
 			}

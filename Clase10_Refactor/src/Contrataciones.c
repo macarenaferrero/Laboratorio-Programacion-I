@@ -80,21 +80,21 @@ int con_inicializarArray(Contrataciones* array,int limite)
  * \return Retorna 0 (EXITO) y -1 (ERROR)
  *
  */
-int con_updateArray(Contrataciones* array,int limite, int indice, int* id)
+int con_updateArray(Contrataciones* array,int limite, int indice, int* idContratacion)
 {
 	int respuesta = -1;
 	Contrataciones auxContratacion;
-	if(array != NULL && limite > 0 && indice < limite && indice >= 0 && id != NULL)
+	if(array != NULL && limite > 0 && indice < limite && indice >= 0 && idContratacion != NULL)
 	{
 		if(	(!utn_getNombre(auxContratacion.archivo, ARCHIVO_LEN, "\nNombre archivo?", "\nNombre invalido",2)) &&
 			(!utn_getDni(auxContratacion.cuit, CUIT_LEN, "\nIngrese CUIT sin guiones:", "\nCUIT invalido",2)) &&
 			(!utn_getNumero(&auxContratacion.dia,"\nCantidad de días?","\nCantidad días inválido",0,1000,2)))
 		{
 			respuesta = 0;
-			auxContratacion.id = *id;
+			auxContratacion.id = *idContratacion;
 			auxContratacion.isEmpty = 0;
 			array[indice]= auxContratacion;
-			*id = *id + 1;
+			*idContratacion = *idContratacion + 1;
 		}
 	}
 	return respuesta;
@@ -162,7 +162,6 @@ int con_buscarId(Contrataciones array[], int limite, int valorBuscado)
 	int i;
 	if(array != NULL && limite > 0 && valorBuscado >= 0)
 	{
-		respuesta = 0;
 		for(i=0;i<limite;i++)
 		{
 			if(array[i].id == valorBuscado)
